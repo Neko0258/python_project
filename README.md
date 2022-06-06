@@ -45,7 +45,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 Step 7:
 
 ```bash
-sudo apt-get install docker-compose-plugin
+sudo apt-get install docker-compose
 ```
 
 Step 8: Building containers from docker-compose
