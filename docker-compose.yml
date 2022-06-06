@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports: 
+      - "8000:5000"
+    networks:
+      - mongo_net
+  dev-db:
+    image: mongo
+    container_name: mongo-dev
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - data_dev:/var/lib/mongo_dev/data
+    networks:
+      mongo_net:
+        ipv4_address: "172.20.0.100"
+
+  prod-db:
+    image: mongo
+    container_name: mongo-prod
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - data_prod:/var/lib/mongo_prod/data
+    networks:
+      mongo_net:
+        ipv4_address: "172.20.0.200"
+networks:
+  mongo_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.0.0/24"
+volumes:
+  data_dev:
+  data_prod:
