@@ -13,7 +13,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
-      - data_dev:/var/lib/mongo_dev/data
+      - datadev:/var/lib/mongo_dev/data
     networks:
       mongo_net:
         ipv4_address: "172.20.0.100"
@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
-      - data_prod:/var/lib/mongo_prod/data
+      - dataprod:/var/lib/mongo_prod/data
     networks:
       mongo_net:
         ipv4_address: "172.20.0.200"
@@ -37,5 +37,5 @@ networks:
       config:
         - subnet: "172.20.0.0/24"
 volumes:
-  data_dev:
-  data_prod:
+  datadev:
+  dataprod:
