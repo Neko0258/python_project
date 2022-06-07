@@ -63,7 +63,7 @@ docker-compose build
 Step 10: Running docker
 
 ```bash
-docker-compose run -d
+docker-compose up -d
 ```
 
 Step 11: Checking logs from container. Maybe the name is flask or something
