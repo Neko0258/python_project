@@ -48,19 +48,25 @@ Step 7:
 sudo apt install docker-compose
 ```
 
-Step 8: Building containers from docker-compose
+Step 8:
+
+```bash
+sudo docker pull mongo
+```
+
+Step 9: Building containers from docker-compose
 
 ```bash
 docker-compose build
 ```
 
-Step 9: Running docker
+Step 10: Running docker
 
 ```bash
 docker-compose run -d
 ```
 
-Step 10: Checking logs from container. Maybe the name is flask or something
+Step 11: Checking logs from container. Maybe the name is flask or something
 
 ```bash
 docker logs 
