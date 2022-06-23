@@ -1,7 +1,7 @@
 Flask==2.0.2
 Flask-Cors==3.0.10
 Flask-Jsonpify==1.5.0
-Flask-JWT==0.3.2
+Flask-JWT
 flask-marshmallow==0.7.0
 flask-mongoengine==1.0.0
 Flask-OAuthlib==0.9.6
@@ -19,7 +19,7 @@ marshmallow==2.21.0
 marshmallow-sqlalchemy==0.12.1
 mongoengine==0.24.1
 platformdirs==2.4.0
-PyJWT==1.4.2
+PyJWT
 pymongo==3.12.1
 python-dotenv==0.20.0
 pytz==2020.1
@@ -30,3 +30,4 @@ webargs==1.10.0
 Werkzeug==2.0.2
 bcrypt==3.2.2
 Flask-Bcrypt==1.0.1
+Flask-JWT-Extended==4.4.1

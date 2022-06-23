@@ -19,7 +19,8 @@ def createProduct():
     productDescription = request.json['description']
     check_production_name = product.find_one({'name_product': productName})
     if not check_production_name and productPrice and productQuantity and productDescription:
-        product.insert({'name_product': productName, 'price': productPrice, 'quantity': productQuantity, 'description': productDescription})
+        product.insert({'name_product': productName, 'price': productPrice, \
+             'quantity': productQuantity, 'description': productDescription})
         response = jsonify(message='Create product successful')
         response.status_code = 201
         return response
@@ -40,8 +41,11 @@ def updateProduct(id):
     productPrice = request.json["price"]
     productQuantity = request.json["quantity"]
     productDescription = request.json["description"]
+    
+    
     if checkProductID:
-        product.update_one({'_id': ObjectId(id)}, {'$set': {'name_product': productName, 'price': productPrice, 'quantity': productQuantity, 'description': productDescription}})
+        product.update_one({'_id': ObjectId(id)}, {'$set': {'name_product': productName,\
+             'price': productPrice, 'quantity': productQuantity, 'description': productDescription}})
         response = jsonify(message='User ' + id + ' Update successfully')
         response.status_code = 200
         return response
@@ -53,7 +57,7 @@ def deleteProduct(id):
     checkProductID = product.find_one({"_id": ObjectId(id)})
     if checkProductID:
         product.delete_one({'_id': ObjectId(id)})
-        response = jsonify(message='User ' + id + ' has been deleted!')
+        response = jsonify(message='Product ' + id + ' has been deleted!')
         return response
     else:
         return handler.not_found()

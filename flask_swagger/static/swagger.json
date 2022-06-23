@@ -140,7 +140,12 @@
           "400": {
             "description": "Product already exist!"
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/product/quantity": {
@@ -200,7 +205,12 @@
           "405": {
             "description": "Validation exception"
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/product/delete/{productId}": {
@@ -230,7 +240,12 @@
           "400": {
             "description": "Product doesn't exist"
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/order/{productId}": {
@@ -287,6 +302,9 @@
         },
         "email": {
           "type": "string"
+        },
+        "role": {
+          "type": "string"
         }
       }
     },
@@ -316,6 +334,13 @@
           "type": "integer"
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
     }
   }
 }

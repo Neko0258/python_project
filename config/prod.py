@@ -5,4 +5,4 @@ load_dotenv(find_dotenv())
 USR = os.environ.get("DBUSR")
 PWD = os.environ.get("DBPASS")
 class prodConfig:
-    MONGODB_URI = f"mongodb://{USR}:{PWD}@172.20.0.200:27017"
+    MONGODB_URI = f"mongodb://{USR}:{PWD}@172.21.0.200:27017"

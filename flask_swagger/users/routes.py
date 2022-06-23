@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import create_access_token
 from flask_swagger.errors import handler
 from flask_swagger import bcrypt
 from flask_swagger import client
@@ -14,6 +15,7 @@ def register():
     username = request.json['username']
     email = request.json['email']
     password = request.json['password']
+    role = request.json['role']
 
     pw_hashed = bcrypt.generate_password_hash(password).decode('utf-8') #hashing password
     #checking username and email in database
@@ -21,7 +23,7 @@ def register():
     check_email = user_collection.find_one({'email': email})
 
     if not (check_user or check_email) and password:
-        user_collection.insert({'username': username, 'password': pw_hashed,'email': email}) #insert to database
+        user_collection.insert({'username': username, 'password': pw_hashed,'email': email, 'role': role}) #insert to database
         response = jsonify(message='Your account have been create success!') #message success after insert
         response.status_code = 201 #status code
         return response
@@ -38,12 +40,13 @@ def login():
     
     pw = user_collection.find_one({"username": username}, {"password"})
     check_pw = bcrypt.check_password_hash(pw["password"], password) #check hashed password
-    
     check_user = user_collection.find({"username": username})
 
 
     if check_user and check_pw:
-        response = jsonify(message='Login sucesss!')
+        access_token = create_access_token(identity=username)
+        response = jsonify(message='Login sucesss!', access_token=access_token)
+        response.set_cookie(access_token)
         response.status_code = 200
         return response
     else:
@@ -55,7 +58,6 @@ def verifyemail():
     email = request.args.get("email") #get email from request
     check_email = user_collection.find_one({"email": email})
     if check_email:
-        
         response = jsonify(message='A verify email has been sent to your email address!')
         response.status_code = 200
         return response
