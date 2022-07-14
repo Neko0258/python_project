@@ -36,37 +36,43 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-Step 6:
+Step 6: update ubuntu
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get update
 ```
 
 Step 7:
 
 ```bash
-sudo apt install docker-compose
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 Step 8:
 
 ```bash
+sudo apt install docker-compose
+```
+
+Step 9:
+
+```bash
 sudo docker pull mongo
 ```
 
-Step 9: Building containers from docker-compose
+Step 10: Building containers from docker-compose
 
 ```bash
 docker-compose build
 ```
 
-Step 10: Running docker
+Step 11: Running docker
 
 ```bash
 docker-compose up -d
 ```
 
-Step 11: Checking logs from container. Maybe the name is flask or something
+Step 12: Checking logs from container. Maybe the name is flask or something
 
 ```bash
 docker logs 
